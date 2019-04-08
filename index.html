@@ -43,7 +43,22 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
 
-</head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css ">
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js%22%3E"> </script>
+   
+    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js%22%3E"> </script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>KOM GODT I GANG MED BRACKETS</title>
+  <meta name="description" content="En interaktiv guide til at komme godt i gang med Brackets.">
+  <link rel="stylesheet" href="main.css">
+
+  <img src="gnomi.jpg" alt="GNOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO" width="130" height="130">
+
+   
 
 <body>
 
@@ -58,6 +73,8 @@
             <ul id="nav-mobile" class="left">
               <li id="menu-page-one"><a href="#">Page 1</a></li>
               <li id="menu-page-two"><a href="#">Page 2</a></li>
+              <li id="menu-page-three"><a href="#">Page 3</a></li>
+              <li id="menu-page-fire"><a href="#">Hemmelig side</a></li>
             </ul>
           </div>
         </nav>
@@ -116,6 +133,121 @@
 
   </div>
 
+   
+
+  <div id="page-three">
+    
+        <h4> Denne side er gnemded</h4>
+ 
+        
+
+          <nav>
+                <div>
+                      <i class="fa fa-bars"></i>
+                </div>
+    
+                <ul>
+              
+                      <li><a href="#">Drop 1 <i class="fa fa-sort-desc"></i></a>
+                            <ul>
+                                  <li><a href="#">Sporgt</a></li>
+                                  <li><a href="#">hh</a></li>
+                                  <li><a href="#">Product 3</a></li>
+                                  <li><a href="#">Product 4</a></li>
+                            </ul>
+                      </li>
+                      
+                </ul> 
+          </nav>
+
+  
+
+          </p>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m3">
+        <!--There are basically two ways to make something happen, when you click an HTML element. This is the first...-->
+       
+          <!--To use google icon font, add a <i> element inside a button link the following way -->
+            
+      </div>
+    </div>
+    <div id="api-component-page-three">
+    </div>
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+  $("nav div").click(function() {
+        $("ul").slideToggle();
+        $("ul ul").css("display", "none");
+  });
+
+  $("ul li").click(function() {
+        $("ul ul").slideUp();
+        $(this).find('ul').slideToggle();
+  });
+
+  $(window).resize(function() {
+        if($(window).width() > 768) {
+              $("ul").removeAttr('style');
+        }
+  });
+
+
+  <div id="page-fire">
+    
+    <h4> Hemmelig side</h4>
+
+    
+
+      <nav>
+            <div>
+                  <i class="fa fa-bars"></i>
+            </div>
+
+            <ul>
+          
+                  <li><a href="#">Drop 1 <i class="fa fa-sort-desc"></i></a>
+                        <ul>
+                              <li><a href="#">Sporgt</a></li>
+                              <li><a href="#">hh</a></li>
+                              <li><a href="#">Product 3</a></li>
+                              <li><a href="#">Product 4</a></li>
+                        </ul>
+                  </li>
+                  
+            </ul> 
+      </nav>
+
+
+
+      </p>
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m3">
+    <!--There are basically two ways to make something happen, when you click an HTML element. This is the first...-->
+   
+      <!--To use google icon font, add a <i> element inside a button link the following way -->
+        
+  </div>
+</div>
+<div id="api-component-page-fire">
+</div>
+</div>
+
+</div>
+
+
+  </script>
+
 
   <!-- End Document body
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -163,6 +295,53 @@
     </div>
 </script>
 
+<!-- template til kærlighedspil-->
+<script id="api-card-template-three" type="text/x-handlebars-template">
+  <div class="row">
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">{{API}}</span>
+            <p>
+              {{Description}}
+              <ul>
+                <li>Auth: {{Auth}}</li>
+                <li>Category: {{Category}}</li>
+                <li>HTTPS: {{HTTPS}}</li>
+              </ul>
+            </p>
+          </div>
+          <div class="card-action">
+            <a href="{{Link}}">{{Link}}</a>
+          </div>
+        </div>
+    </div>
+  </div>
+</script>
+
+<script id="api-card-template-fire" type="text/x-handlebars-template">
+  <div class="row">
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">{{API}}</span>
+            <p>
+              {{Description}}
+              <ul>
+                <li>Auth: {{Auth}}</li>
+                <li>Category: {{Category}}</li>
+                <li>HTTPS: {{HTTPS}}</li>
+              </ul>
+            </p>
+          </div>
+          <div class="card-action">
+            <a href="{{Link}}">{{Link}}</a>
+          </div>
+        </div>
+    </div>
+  </div>
+</script>
+
   <!-- Page functionality - Javascripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script>
@@ -170,9 +349,17 @@
     var apiSource = $("#api-card-template").html();
     var apiTemplate = Handlebars.compile(apiSource);
 
+
+
     // Setup handlebars for second API card
     var apiSourceTwo = $("#api-card-template-two").html();
     var apiTemplateTwo = Handlebars.compile(apiSourceTwo);
+
+    var apiSourceThree = $("#api-card-template-three").html();
+    var apiTemplateThree = Handlebars.compile(apiSource);
+
+    var apiSourcefire = $("#api-card-template-fire").html();
+    var apiTemplatefire = Handlebars.compile(apiSource);
 
     //Functions to actually get JSON data from external API's. When .done is called, you receive the data
     function getApiData(someparam) {
@@ -192,10 +379,24 @@
         $('#api-component-page-two').html(apiTemplateTwo(data.entries[0]));
       });
     }
+    
+    //GetApiData til tjærlighedsting
+
+    function kjærapi(operation,expression) {
+      $.ajax({
+        url: "https://newton.now.sh/" + operation + expression,
+      }).done(function (data) {
+        console.log(data);
+        $('#api-component-page-three').html(apiTemplate(data));
+      });
+    }
 
     //Handle menu - first show page one no matter what
     getApiData(1)
     $('#page-two').hide();
+    $('#page-three').hide();
+    $('#page-fire').hide();
+
 
     //When someone clicks the page one navigation link
     //This is the second way to make something happen, when you click an HTML element
@@ -203,13 +404,39 @@
       getApiData(1)
       $('#page-one').show();
       $('#page-two').hide();
+      $('#page-three').hide(); 
     });
     //When someone clicks the page two navigation link
     $('#menu-page-two').click(function () {
       $('#page-one').hide();
       $('#page-two').show();
+      $('#page-three').hide(); 
     });
+
+    $('#menu-page-three').click(function () {
+      $('#page-one').hide();
+      $('#page-two').hide();
+      $('#page-three').show(); 
+    });
+    $('#menu-page-three').click(function () {
+      $('#page-one').hide();
+      $('#page-two').hide();
+      $('#page-three').hide(); 
+      $('#page-three').show();
+    });
+
+    
+
+    /* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+
+
+// Close the dropdown menu if the user clicks outside of it
+
+
+
   </script>
+
 
   <!-- Compiled and minified JavaScript for Materialize functions-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
