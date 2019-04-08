@@ -1,4 +1,4 @@
-#Mit eget matematik lommeregner projekt:
+#Matematik lommeregner projekt:
 
 Jeg har nu arbejdet med Jquery, html og css for at lave en app der skal tage brug i et matematik api. Apiet har forskellige regneoperationer indbygget i sig og formålet er, at lave det om til en funktionel interaktiv lommeregner. Planen er, at man vælger en regne operation i index, ved hjælp af en dropdown menu. Efter kan man så indsætte det uktryk man gerne vil regne på og klikke på en knap, som returnere data fra vores api, som JSON. Denne data vi får skal så sættes pænt op, med eventuelle mellem regninger. 
 
