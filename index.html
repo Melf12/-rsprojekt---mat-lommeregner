@@ -40,7 +40,7 @@
   <!-- Favicon
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
-  
+
   <!-- Compiled and minified JavaScript for Materialize functions-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
@@ -79,36 +79,24 @@
     <div id="page-one">
       <div class="row">
         <div class="col s12 m6">
-          <!-- Dropdown Trigger -->
-          <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Vælg regneoperation her</a>
-
-          <!-- Dropdown Structure -->
-          <ul id='dropdown1' class='dropdown-content'>
-            <li><a listed-activity="diy" class="activity-listing">Simplify</a></li>
-            <li><a listed-activity="relaxation" class="activity-listing">Derive</a></li>
-            <li><a listed-activity="recreational" class="activity-listing">Recreational</a></li>
-            <li><a listed-activity="education" class="activity-listing"><i class="material-icons"
-                  style="width:20px">school</i>Education</a></li>
-            <li><a listed-activity="busywork" class="activity-listing"><i class="material-icons">work</i>Busywork</a>
-            </li>
-            <li><a listed-activity="social" class="activity-listing"><i class="material-icons">people</i>Social</a></li>
-            <li><a listed-activity="music" class="activity-listing"><i class="material-icons">music_note</i>Music</a>
-            </li>
-            <li><a listed-activity="cooking" class="activity-listing"><i class="material-icons">fastfood</i>Cooking</a>
-            </li>
-            <li><a listed-activity="charity" class="activity-listing"><i
-                  class="material-icons">attach_money</i>Charity</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12 m6">
           <h4> Denne side er stadig under konstruktion</h4>
           <h6> Vælg en regne operation under dropdown boxen og skriv derefer den expression, du vil operere på ind i
             feltet.
           </h6>
-          <input id="exp_input">
+          <div class="row">
+            <div class="input-field col s12">
+              <select id="selectExp">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+            </div>
+          </div>
 
+          <input id="exp_input">
+          <a id="resultBtn" class="waves-effect waves-light btn">vis</a>
+          <div id="mathResult"></div>
         </div>
       </div>
     </div>
@@ -118,13 +106,13 @@
         <div class="col s12 m6">
           <h4>Page 2</h4>
           <div class="row">
-              <div class="col s12 m6">
-                <div id="mySidenav" class="sidenav">
-                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                  <a href="#">About</a>
-                </div>
+            <div class="col s12 m6">
+              <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#">About</a>
               </div>
-            </div>        
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -146,14 +134,14 @@
 
   <!-- Handlebar templates - these HTML snippets are only shown when we compile them with Handlebars
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <!-- MATERIALIZE CARD TEMPLATE TO BORED API ACTIVITY -->
-  <script id="api-card-template" type="text/x-handlebars-template">
+  <!-- MATERIALIZE CARD TEMPLATE TO MATH RESULT -->
+  <script id="math-card-template" type="text/x-handlebars-template">
     <div class="row">
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
-              <span class="card-title">{{type}}</span>
-              <p>{{activity}}</p>
+              <span class="card-title">{{some_json_value}}</span>
+              <p>{{titel}}</p>
             </div>
             <div class="card-action">
               <a href="#">This is a link</a>
@@ -237,9 +225,13 @@
   <!-- Page functionality - Javascripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script>
+    $(document).ready(function () {
+      $('select').formSelect();
+    });
+
     // Setup handlebars for first API card
-    var apiSource = $("#api-card-template").html();
-    var apiTemplate = Handlebars.compile(apiSource);
+    var mathSource = $("#math-card-template").html();
+    var mathTemplate = Handlebars.compile(mathSource);
 
 
 
@@ -252,6 +244,13 @@
 
     var apiSourcefire = $("#api-card-template-fire").html();
     var apiTemplatefire = Handlebars.compile(apiSource);
+
+    $('#resultBtn').click(function(){
+        console.log(
+          $("#selectExp").value();
+        );}
+    );
+
 
     //Functions to actually get JSON data from external API's. When .done is called, you receive the data
     function getApiData(someparam) {
@@ -320,7 +319,7 @@
     });
 
     $('.dropdown-trigger').dropdown(
-      
+
     );
 
 
