@@ -86,10 +86,23 @@
           <div class="row">
             <div class="input-field col s12">
               <select id="selectExp">
-                <option value="" disabled selected>Choose your option</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
+                <option value="" disabled selected>Choose your Expression</option>
+                <option value="1">Simplify</option>
+                <option value="2">Faktoriser</option>
+                <option value="3">Differentier</option>
+                <option value="4">Integrer</option>
+                <option value="5">Find 0 punkter</option>
+                <option value="6">Find Tangenter</option>
+                <option value="7">Areal under kurve</option>
+                <option value="8">Cosinus</option>
+                <option value="9">Sinus</option>
+                <option value="10">Tangens</option>
+                <option value="11">Arcus Cosinus</option>
+                <option value="12">Arcus Sinus</option>
+                <option value="13">Arcus Tangens</option>
+                <option value="14">Den aboslute værdi</option>
+                <option value="15">Logaritmen</option>
+
               </select>
             </div>
           </div>
@@ -234,22 +247,21 @@
     var mathTemplate = Handlebars.compile(mathSource);
 
 
-
     // Setup handlebars for second API card
     var apiSourceTwo = $("#api-card-template-two").html();
     var apiTemplateTwo = Handlebars.compile(apiSourceTwo);
 
     var apiSourceThree = $("#api-card-template-three").html();
-    var apiTemplateThree = Handlebars.compile(apiSource);
+    var apiTemplateThree = Handlebars.compile(apiSourceThree);
 
     var apiSourcefire = $("#api-card-template-fire").html();
-    var apiTemplatefire = Handlebars.compile(apiSource);
+    var apiTemplatefire = Handlebars.compile(apiSourcefire);
 
     $('#resultBtn').click(function(){
         console.log(
-          $("#selectExp").value();
+          $("#selectExp").value()
         );}
-    );
+    )
 
 
     //Functions to actually get JSON data from external API's. When .done is called, you receive the data
