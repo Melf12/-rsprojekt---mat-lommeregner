@@ -18,6 +18,15 @@
   <!--JAVASCRIPTS 
           –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
+          <!-- Latest compiled and minified plotly.js JavaScript -->
+
+
+
+<!-- OR use a specific plotly.js release (e.g. version 1.5.0) -->
+<script src="https://cdn.plot.ly/plotly-1.5.0.min.js"></script>
+
+
+
   <!--jQuery to make easier http calls-->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -62,9 +71,10 @@
           <div class="nav-wrapper">
             <ul id="nav-mobile" class="left">
               <li id="menu-page-one"><a href="#">Page 1</a></li>
-              <li id="menu-page-two"><a href="#">Page 2</a></li>
+          <!--    <li id="menu-page-two"><a href="#">Page 2</a></li>
               <li id="menu-page-three"><a href="#">Page 3</a></li>
               <li id="menu-page-fire"><a href="#">Hemmelig side</a></li>
+              -->
             </ul>
           </div>
         </nav>
@@ -87,21 +97,21 @@
             <div class="input-field col s12">
               <select id="selectExp">
                 <option value="" disabled selected>Choose your Expression</option>
-                <option value="1">Simplify</option>
-                <option value="2">Faktoriser</option>
-                <option value="3">Differentier</option>
-                <option value="4">Integrer</option>
-                <option value="5">Find 0 punkter</option>
-                <option value="6">Find Tangenter</option>
-                <option value="7">Areal under kurve</option>
-                <option value="8">Cosinus</option>
-                <option value="9">Sinus</option>
-                <option value="10">Tangens</option>
-                <option value="11">Arcus Cosinus</option>
-                <option value="12">Arcus Sinus</option>
-                <option value="13">Arcus Tangens</option>
-                <option value="14">Den aboslute værdi</option>
-                <option value="15">Logaritmen</option>
+                <option value="simplify">Simplify</option>
+                <option value="factor">Faktoriser</option>
+                <option value="derive">Differentier</option>
+                <option value="integrate">Integrer</option>
+                <option value="zeroes">Find 0 punkter</option>
+                <option value="tangent">Find Tangenter</option>
+                <option value="area">Areal under kurve</option>
+                <option value="cos">Cosinus</option>
+                <option value="sin">Sinus</option>
+                <option value="tan">Tangens</option>
+                <option value="arccos">Arcus Cosinus</option>
+                <option value="arcsin">Arcus Sinus</option>
+                <option value="arctan">Arcus Tangens</option>
+                <option value="abs">Den aboslute værdi</option>
+                <option value="log">Logaritmen</option>
 
               </select>
             </div>
@@ -110,6 +120,12 @@
           <input id="exp_input">
           <a id="resultBtn" class="waves-effect waves-light btn">vis</a>
           <div id="mathResult"></div>
+
+         
+              <a id="graphBtn" class="waves-effect waves-light btn">grafer dit resultat</a>
+              <div id="graphResult"></div>
+
+          
         </div>
       </div>
     </div>
@@ -153,11 +169,11 @@
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
-              <span class="card-title">{{some_json_value}}</span>
-              <p>{{titel}}</p>
+              <span class="card-title">{{result}}</span>
+           
             </div>
             <div class="card-action">
-              <a href="#">This is a link</a>
+              
             </div>
           </div>
       </div>
@@ -258,10 +274,18 @@
     var apiTemplatefire = Handlebars.compile(apiSourcefire);
 
     $('#resultBtn').click(function(){
-        console.log(
-          $("#selectExp").value()
-        );}
-    )
+      //tjek om felterne er udfyldt
+      console.log($("#selectExp").val());
+
+      $.ajax({
+        url: "https://newton.now.sh/" + $("#selectExp").val() + 
+          '/'+$('#exp_input').val()
+      }).done(function (data) {
+        console.log(data);
+       $('#mathResult').html(mathTemplate(data));
+      });
+
+    });
 
 
     //Functions to actually get JSON data from external API's. When .done is called, you receive the data
@@ -270,7 +294,7 @@
         url: "https://www.boredapi.com/api/activity?participants=" + someparam,
       }).done(function (data) {
         console.log(data);
-        $('#api-component-page-one').html(apiTemplate(data));
+        $('#api-component-page-one').html(Template(data));
       });
     }
 
@@ -297,7 +321,7 @@
     }
 
     //Handle menu - first show page one no matter what
-    getApiData(1)
+   
     $('#page-two').hide();
     $('#page-three').hide();
     $('#page-fire').hide();
