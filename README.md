@@ -15,3 +15,7 @@ Til at udvikle denne lommeregner programmere jeg i html, samt javascript og beny
 Update 14-04:
 Koden fungere nu optimalt i forhold til de fundamentale mekaniker lommeregneren skal bruge. Dvs. det er nu muligt at vælge en operation i dropdown menu, skrive et udtryk og få et resultat ud fra api'en. Jeg har kigget og fundet flere graphing bilbioteker, som jeg nu vil arbejde videre på og integrere. Ellers skal jeg også begynde at få gjort det hele pænt med CSS og nogle finde JQUERY animationer. 
 
+Update 20-05-19:
+Api'en jeg bruger nemlig https://newton.now.sh/, er umiddelbart gået ned, så programmet vil ikke fungere igennem pages, men koden er der stadig. Venter på følgende information om hvordan jeg skal arbejde videre op til aarsprøven.
+
+Hvis jeg tager op i aarsprøven med dette, tænker jeg, at jeg stadig kan forklare koden og samtidig tegne, hvordan programmet virkede, da at begynde på et nyt projekt er lidt for sent.
